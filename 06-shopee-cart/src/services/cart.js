@@ -7,7 +7,7 @@ async function addItem(userCart, item) {
 }
 
 // -> calcular o total do carrinho
-async function calculateTotal(userCart) {
+async function calculateTotal(userCart, paymentMethod = "debito") {
 console.log(" \n Shopee Cart TOTAL IS:");
 
   const result = userCart.reduce((total, item) => total + item.subtotal(), 0);  
