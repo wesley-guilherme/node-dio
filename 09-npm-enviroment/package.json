@@ -1,0 +1,16 @@
+{
+  "name": "09-npm-enviroment",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start:dev": "node --env-file=.env.prod --watch src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^17.2.1"
+  }
+}
