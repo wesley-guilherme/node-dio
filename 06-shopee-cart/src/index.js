@@ -18,4 +18,4 @@ await cartService.displayCart(myCart);
 
 // await cartService.deleteItem(myCart, item2.name);
 
-await cartService.calculateTotal(myCart);
+await cartService.calculateTotal(myCart, "credito");
