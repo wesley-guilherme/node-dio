@@ -8,11 +8,42 @@ async function addItem(userCart, item) {
 
 // -> calcular o total do carrinho
 async function calculateTotal(userCart, paymentMethod = "debito") {
-console.log(" \n Shopee Cart TOTAL IS:");
 
-  const result = userCart.reduce((total, item) => total + item.subtotal(), 0);  
-  console.log(`🎁 Total: ${result}`);  
+  const totalBruto = userCart.reduce((total, item) => total + item.subtotal(), 0);  
+
+  let totalFinal = totalBruto;
+  let paymentLabel = "";
+  console.log(` \n Shopee Cart TOTAL IS: ${totalFinal} `);
+  
+  switch (paymentMethod.toLowerCase()) {
+    case "pix":
+      totalFinal = totalBruto * 0.90;
+      paymentLabel = "( PIX - 10% de desconto)";
+      break;
+      case "credito":
+        totalFinal = totalBruto * 1.05;
+        paymentLabel = "( CRÉDITO - 10% de acréscimo)";
+        break;
+        case "debito":
+          totalFinal = totalBruto;
+      paymentLabel = " DÉBITO - sem alteração de desconto ou acréscimo";
+          break;
+          default:
+            console.log("⚠️ Método de pagamento inválido, aplicando valor normal.")
+  }
+      const fmtBRL = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL"
+  });
+
+  console.log("\nShopee Cart TOTAL IS:");
+  console.log(`💰 Subtotal (sem ajuste): ${fmtBRL.format(totalBruto)}`);
+  console.log(`💳 Método de pagamento: ${paymentLabel}`);
+  console.log(`🎁 Total a pagar: ${fmtBRL.format(totalFinal)}`);
+
+  return totalFinal;
 }
+
 
 // -> deletar item no carrinho
 async function deleteItem(userCart, name) {
