@@ -11,3 +11,6 @@ const mainPrompt = [
 ];
 
 export default mainPrompt;
+
+//chalk.yellowBright.bold
+//chalk.redBright.italic
