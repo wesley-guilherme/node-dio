@@ -1,16 +1,10 @@
 {
-  "name": "10-typescript",
+  "name": "11-debug",
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
-  "directories": {
-    "doc": "docs"
-  },
   "scripts": {
-    "dist": "tsup src",
-    "start:dev": "tsx src/index.ts",
-    "start:watch": "tsx watch src/index.ts",
-    "start:dist": "npm run dist && node src/index.js"
+    "start:dev": "tsx src/index.ts"
   },
   "keywords": [],
   "author": "",
