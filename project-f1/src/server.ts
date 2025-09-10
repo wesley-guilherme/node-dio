@@ -1,7 +1,13 @@
 import fastify from "fastify";
+import cors from "@fastify/cors"
 import { request } from "http";
 
 const server = fastify({logger: true});
+
+server.register(cors, {
+    origin: "*",
+    methods: ["GET", "POST"]
+})
 
 const teams = [
     {
