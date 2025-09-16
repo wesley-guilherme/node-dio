@@ -3,8 +3,7 @@ import { getPlayerService } from './../services/players-service';
 import { Request, Response } from "express";
 
 export const getPlayer = async (req: Request, res: Response) => {
-    const data = await getPlayerService();
-    const response = await ok(data);
+    const HttpResponse = await getPlayerService();
 
-    res.status(response.statusCode).json(response.body);
+    res.status(HttpResponse.statusCode).json(HttpResponse.body); 
 };
