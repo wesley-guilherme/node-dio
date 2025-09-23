@@ -13,6 +13,7 @@ export const getPlayerById = async (req: Request, res: Response) => {
 };
 
 
-export const postPlayer = async(req:Request, res: Response) => {
-    
-}
+export const postPlayer = async (req:Request, res: Response) => {
+    const bodyValue = req.body;
+    console.log(bodyValue);
+};
