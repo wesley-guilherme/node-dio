@@ -306,7 +306,8 @@ const database: PlayerModel[] = [
     },
   },
 ];
-    export const findAllPlayers = async (): Promise<PlayerModel[]> => {
+    
+export const findAllPlayers = async (): Promise<PlayerModel[]> => {
         return database
     };
 
@@ -314,6 +315,11 @@ const database: PlayerModel[] = [
       id:number
     ): Promise<PlayerModel | undefined> => {
         return database.find((player) => player.id === id)
+    };
+
+    export const insertPlayer = async (player: PlayerModel) => {
+      database.push(player)
     }
+
     
 

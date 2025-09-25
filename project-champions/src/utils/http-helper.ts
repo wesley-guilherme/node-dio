@@ -11,5 +11,12 @@ export const noContent = async(): Promise<HttpResponse> => {
     return {
         statusCode: 204,
         body: null,
-    }
+    };
+};
+
+export const badRequest = async (): Promise<HttpResponse> => {
+    return {
+        statusCode: 400,
+        body: null, 
+    };
 };

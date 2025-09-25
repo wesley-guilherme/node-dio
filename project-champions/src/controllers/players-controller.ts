@@ -1,5 +1,7 @@
+import { HttpResponse } from './../models/http-response-model';
 import { Request, Response} from "express";
 import * as service from '../services/players-service';
+import { noContent } from '../utils/http-helper';
 
 export const getPlayer = async (req: Request, res: Response) => {
     const httpResponse = await service.getPlayerService();
@@ -15,5 +17,12 @@ export const getPlayerById = async (req: Request, res: Response) => {
 
 export const postPlayer = async (req:Request, res: Response) => {
     const bodyValue = req.body;
-    console.log(bodyValue);
+    const HttpResponse = await service.createPlayerService(bodyValue)
+
+    if(HttpResponse) {
+        res.status(HttpResponse.statusCode).json(HttpResponse.body);
+    } else {
+        const response  = await noContent();
+        res.status(response.statusCode).json(response.body)
+    }
 };
