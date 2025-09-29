@@ -319,7 +319,15 @@ export const findAllPlayers = async (): Promise<PlayerModel[]> => {
 
     export const insertPlayer = async (player: PlayerModel) => {
       database.push(player)
-    }
+    };
+
+    export const deleteOnePlayer = async (id: number) => {
+      const index = database.findIndex((p) => p.id === id);
+
+      if (index != -1) {
+        database.splice(index, 1)
+      }
+    };
 
     
 

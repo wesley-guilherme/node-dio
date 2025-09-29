@@ -1,6 +1,8 @@
+import { updatePlayer } from './../controllers/players-controller';
 import { PlayerModel } from "../models/player-model";
 import * as PlayerRepository from "../repositories/players-repository";
 import * as HttpResponse from "../utils/http-helper";
+import { StatisticsModel } from '../models/statistics-model';
 
 export const getPlayerService = async () =>  {
     const data = await PlayerRepository.findAllPlayers();
@@ -33,7 +35,8 @@ export const createPlayerService = async (player: PlayerModel) => {
     let response = null
     //verifica se o objeto está vazio
     if(Object.keys(player).length !== 0) {
-        response = await PlayerRepository.insertPlayer(player);
+        await PlayerRepository.insertPlayer(player);
+        response = HttpResponse.created()
     } else {
       response =  HttpResponse.badRequest();
     }
@@ -41,4 +44,18 @@ export const createPlayerService = async (player: PlayerModel) => {
     return response
 };
 
-//parei aos 16:50 ajustando o cadastro
+export const deletePlayerService = async (id: number) => {
+    let response = null;
+    await PlayerRepository.deleteOnePlayer(id);
+    response = HttpResponse.ok({ message: "deleted" });
+    return response; 
+}
+
+export const updatePlayerService = async (
+    id: number,
+    statistics: StatisticsModel
+) => { 
+
+}; 
+
+//parei em update implementando service e repository
