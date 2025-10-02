@@ -73,4 +73,4 @@ if (Object.keys(data).length === 0) {
    return response;
 }; 
 
-//parei criando recurso de clubs
+//parei arquivo json
