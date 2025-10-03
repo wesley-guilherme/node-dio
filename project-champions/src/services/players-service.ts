@@ -1,9 +1,7 @@
-import { updatePlayer } from './../controllers/players-controller';
 import { PlayerModel } from "../models/player-model";
 import * as PlayerRepository from "../repositories/players-repository";
 import * as HttpResponse from "../utils/http-helper";
 import { StatisticsModel } from '../models/statistics-model';
-import { response } from 'express';
 
 export const getPlayerService = async () =>  {
     const data = await PlayerRepository.findAllPlayers();
